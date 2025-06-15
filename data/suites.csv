@@ -1,0 +1,4 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","114862","Validate availability for all shipping postcodes","","Sun Jun 15 19:35:07 UTC 2025","passed","Sun Jun 15 19:37:02 UTC 2025","","Lifely POC","",""
+"","36202","Validate PDP with API data","","Sun Jun 15 19:34:31 UTC 2025","passed","Sun Jun 15 19:35:07 UTC 2025","","Lifely POC","",""
+"","2189","Validate availability for the given shipping postcode","","Sun Jun 15 19:37:02 UTC 2025","passed","Sun Jun 15 19:37:04 UTC 2025","","Lifely POC","",""
