@@ -1,0 +1,84 @@
+name: E-Living WebdriverIO Automation Tests
+
+on:
+  push:
+    branches: [master]
+  schedule:
+    - cron: '0 1 * * *'  # 11 AM AEST (1 AM UTC)
+
+jobs:
+  wdio-tests:
+    runs-on: ubuntu-latest
+    name: Run WebdriverIO Tests
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run WDIO tests
+        run: npm run wdio
+
+      - name: Generate Allure Report
+        run: npm run allure:generate
+
+      - name: Zip Allure Report
+        run: zip -r allure-report.zip allure-report
+
+      - name: Upload Allure Report Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: allure-report
+          path: allure-report.zip
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GH_PAGES_TOKEN }}
+          publish_dir: ./allure-report
+          publish_branch: gh-pages
+
+      - name: Extract Allure Summary
+        id: allure-summary
+        run: |
+          PASSED=$(grep -o '"passed":[0-9]*' allure-report/widgets/summary.json | grep -o '[0-9]*')
+          FAILED=$(grep -o '"failed":[0-9]*' allure-report/widgets/summary.json | grep -o '[0-9]*')
+          BROKEN=$(grep -o '"broken":[0-9]*' allure-report/widgets/summary.json | grep -o '[0-9]*')
+          SKIPPED=$(grep -o '"skipped":[0-9]*' allure-report/widgets/summary.json | grep -o '[0-9]*')
+          TOTAL=$(($PASSED + $FAILED + $BROKEN + $SKIPPED))
+
+          echo "passed=$PASSED" >> $GITHUB_OUTPUT
+          echo "failed=$FAILED" >> $GITHUB_OUTPUT
+          echo "broken=$BROKEN" >> $GITHUB_OUTPUT
+          echo "skipped=$SKIPPED" >> $GITHUB_OUTPUT
+          echo "total=$TOTAL" >> $GITHUB_OUTPUT
+
+    #   - name: Send Slack Notification
+    #     uses: slackapi/slack-github-action@v1.24.0
+    #     with:
+    #       payload: |
+    #         {
+    #           "text": "*Test Run Summary* :rocket:",
+    #           "attachments": [
+    #             {
+    #               "color": "#36a64f",
+    #               "fields": [
+    #                 { "title": "Total", "value": "${{ steps.allure-summary.outputs.total }}", "short": true },
+    #                 { "title": "Passed", "value": "${{ steps.allure-summary.outputs.passed }}", "short": true },
+    #                 { "title": "Failed", "value": "${{ steps.allure-summary.outputs.failed }}", "short": true },
+    #                 { "title": "Broken", "value": "${{ steps.allure-summary.outputs.broken }}", "short": true },
+    #                 { "title": "Skipped", "value": "${{ steps.allure-summary.outputs.skipped }}", "short": true },
+    #                 { "title": "Report", "value": "https://your-username.github.io/your-repo-name/", "short": false }
+    #               ]
+    #             }
+    #           ]
+    #         }
+    #     env:
+    #       SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
