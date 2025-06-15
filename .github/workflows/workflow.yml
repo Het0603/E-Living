@@ -30,7 +30,7 @@ jobs:
         run: npm ci
 
       - name: Run WDIO tests
-        run: npm run wdio || echo "WDIO tests failed, but continuing workflow"
+        run: npm run wdio || true
 
       - name: Generate Allure Report
         run: |
