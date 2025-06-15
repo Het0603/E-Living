@@ -5,6 +5,12 @@ on:
     branches: [master]
   schedule:
     - cron: '0 1 * * *'  # 11 AM AEST (1 AM UTC)
+  workflow_dispatch:
+    inputs:
+      targetBranch:
+        description: 'Branch to run workflow from'
+        required: true
+        default: 'master'
 
 jobs:
   wdio-tests:
