@@ -33,7 +33,9 @@ jobs:
         run: npm run wdio
 
       - name: Generate Allure Report
-        run: npm run allure:generate
+        run: |
+            npm install -g allure-commandline --save-dev
+            npm run allure:generate
 
       - name: Zip Allure Report
         run: zip -r allure-report.zip allure-report
