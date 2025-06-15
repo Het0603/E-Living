@@ -61,7 +61,7 @@ export const config: WebdriverIO.Config = {
                 '--disable-infobars',
                 '--ignore-certificate-errors',
                 '--window-size=2048,1152',
-                // '--headless',
+                '--headless',
                 '--no-sandbox',
                 '--disable-gpu',
                 '--disable-setuid-sandbox',
