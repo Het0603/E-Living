@@ -1,4 +1,4 @@
 "DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"","97005","Validate availability for all shipping postcodes","","Sun Oct 12 02:21:57 UTC 2025","passed","Sun Oct 12 02:23:34 UTC 2025","","Lifely POC","",""
-"","2016","Validate availability for the given shipping postcode","","Sun Oct 12 02:23:34 UTC 2025","passed","Sun Oct 12 02:23:36 UTC 2025","","Lifely POC","",""
-"","25809","Validate PDP with API data","","Sun Oct 12 02:21:31 UTC 2025","broken","Sun Oct 12 02:21:57 UTC 2025","","Lifely POC","",""
+"","26205","Validate PDP with API data","","Mon Oct 13 02:26:02 UTC 2025","broken","Mon Oct 13 02:26:28 UTC 2025","","Lifely POC","",""
+"","103087","Validate availability for all shipping postcodes","","Mon Oct 13 02:26:28 UTC 2025","passed","Mon Oct 13 02:28:11 UTC 2025","","Lifely POC","",""
+"","2089","Validate availability for the given shipping postcode","","Mon Oct 13 02:28:11 UTC 2025","passed","Mon Oct 13 02:28:14 UTC 2025","","Lifely POC","",""
