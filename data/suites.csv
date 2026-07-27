@@ -1,4 +1,4 @@
 "DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"","22368","Validate PDP with API data","","2026-07-26","broken","2026-07-26","","Lifely POC","",""
-"","1941","Validate availability for the given shipping postcode","","2026-07-26","passed","2026-07-26","","Lifely POC","",""
-"","96004","Validate availability for all shipping postcodes","","2026-07-26","passed","2026-07-26","","Lifely POC","",""
+"","25124","Validate PDP with API data","","2026-07-27","broken","2026-07-27","","Lifely POC","",""
+"","1701","Validate availability for the given shipping postcode","","2026-07-27","passed","2026-07-27","","Lifely POC","",""
+"","85479","Validate availability for all shipping postcodes","","2026-07-27","passed","2026-07-27","","Lifely POC","",""
